@@ -43,11 +43,11 @@ for index, ascii_value in enumerate(ascci_student_name):
 
 
     if len(current_good_letter) == 1:
-        distanceArr.append(abs(ascii_value - current_good_letter[0]))
+        distanceArr.append(abs(current_good_letter[0] - ascii_value))
     else:
-        current_good_letter = find_nearest_numbers(calcHelper[index- 1][0],current_good_letter)
+        current_good_letter = find_nearest_numbers(calcHelper[len(calcHelper)- 1][0],current_good_letter)
         calcHelper[index][1]= current_good_letter[0]
-        distanceArr.append(abs(calcHelper[len(calcHelper) - 1][0] - current_good_letter[0]))
+        distanceArr.append(abs(current_good_letter[0] - calcHelper[len(calcHelper) - 1][0]))
 
 
-print(sum(distanceArr))
+print(f"{sum(distanceArr)}")

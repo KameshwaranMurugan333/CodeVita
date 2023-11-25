@@ -3,7 +3,7 @@ def get_ascii_values(input_string):
     return ascii_values
 
 value = "(@HR*i{kcQl"
-anotherValue = "6*K4AQfjgpi"
+anotherValue = "6*K4AQf]gpi"
 
 def find_nearest_numbers(target, number_array):
     closest_numbers = []
