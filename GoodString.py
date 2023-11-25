@@ -28,10 +28,26 @@ ascci_good_string = get_ascii_values(good_string)
 ascci_student_name = get_ascii_values(student_name)
 
 distanceArr = []
+calcHelper = []
 
 for index, ascii_value in enumerate(ascci_student_name):
+    if ascii_value in ascci_good_string:
+        continue
+
     current_good_letter = find_nearest_numbers(ascii_value,ascci_good_string)
+
+    if index == 0:
+        calcHelper.append([ascci_good_string[0],current_good_letter[0]])
+    else:
+        calcHelper.append([calcHelper[len(calcHelper) - 1][1],current_good_letter[0]])
+
+
     if len(current_good_letter) == 1:
-        distanceArr.append(abs(ascii_value - current_good_letter.pop()))
+        distanceArr.append(abs(ascii_value - current_good_letter[0]))
+    else:
+        current_good_letter = find_nearest_numbers(calcHelper[index- 1][0],current_good_letter)
+        calcHelper[index][1]= current_good_letter[0]
+        distanceArr.append(abs(calcHelper[len(calcHelper) - 1][0] - current_good_letter[0]))
+
 
 print(sum(distanceArr))
